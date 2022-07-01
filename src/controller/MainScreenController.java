@@ -38,11 +38,11 @@ public class MainScreenController {
 	Stage stage;
 	
 	@FXML
-	public void logoutPressed(ActionEvent event){	
+	public void exitButtonPressed(ActionEvent event){	
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Logout");
-		alert.setHeaderText("You're about to logout!");
+		alert.setTitle("Quit");
+		alert.setHeaderText("You're about to exit!");
 		alert.setContentText("Do you want to save before exiting?: ");
 		
 		if(alert.showAndWait().get() == ButtonType.OK){
