@@ -23,11 +23,12 @@ public class MainScreen extends Application{
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setResizable(false);
 		
 		
 		stage.setOnCloseRequest(event -> {
 			event.consume();
-			logoutPressed(stage);	
+			exitPressed(stage);	
 		});stage.show();
 		
 	} catch(Exception e) {
@@ -35,11 +36,11 @@ public class MainScreen extends Application{
 	}
 }	
 
-public void logoutPressed(Stage stage){	
+public void exitPressed(Stage stage){	
 	
 	Alert alert = new Alert(AlertType.CONFIRMATION);
-	alert.setTitle("Logout");
-	alert.setHeaderText("You're about to logout!");
+	alert.setTitle("Quit");
+	alert.setHeaderText("You're about to exit!");
 	alert.setContentText("See you next time !!!");
 	
 	if (alert.showAndWait().get() == ButtonType.OK){

@@ -1,54 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <MenuBar fx:id="mymenubar" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu fx:id="myhelpmenu" mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem fx:id="helpmenuitem" mnemonicParsing="false" onAction="#btnHelpPressed" text="Open for Help :&gt;" />
-               </items></Menu>
-        </menus>
-      </MenuBar>
-   </top>
-   <right>
-      <VBox fx:id="myvbox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="26.0" prefWidth="101.0" text="Logout" />
-         </children>
-      </VBox>
-   </right>
-   <bottom>
-      <Pane fx:id="mypane2" prefHeight="114.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane layoutX="-15.0" layoutY="-6.0" prefHeight="130.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="MergeSort" />
-               </children>
-            </StackPane>
-            <StackPane layoutX="191.0" layoutY="-4.0" prefHeight="118.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="RadixSort" />
-               </children>
-            </StackPane>
-            <StackPane layoutX="400.0" layoutY="-1.0" prefHeight="115.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="CountingSort" />
-               </children>
-            </StackPane>
-         </children>
-      </Pane>
-   </bottom>
+<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Pane fx:id="mypane1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <Pane fx:id="mypane1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="92.0" layoutY="362.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="148.0" text="MergeSort">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button layoutX="680.0" layoutY="363.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="152.0" text="CountingSort">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button layoutX="390.0" layoutY="363.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="145.0" text="RadixSort">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="172.0" prefHeight="76.0" prefWidth="925.0" text="Please choose an algorithm to start the sorting visualization">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children></Pane>
    </center>
+   <top>
+      <ToolBar prefHeight="52.0" prefWidth="926.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button fx:id="helpBtn" mnemonicParsing="false" onAction="#btnHelpPressed" prefHeight="34.0" prefWidth="60.0" text="Help">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Region prefHeight="0.0" prefWidth="785.0" />
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="37.0" prefWidth="56.0" text="Exit">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+        </items>
+      </ToolBar>
+   </top>
 </BorderPane>
