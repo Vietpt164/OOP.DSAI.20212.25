@@ -21,7 +21,7 @@ public class HelpController   {
 		    
 		    pane.setCenter(scrollPane);
 			Scene scene = new Scene(pane, 500, 500);
-			Scanner input = new Scanner(new File("E:\\OOP.DSAI.20212.25\\src\\controller\\Help.txt"));
+			Scanner input = new Scanner(new File("D:\\oopshit\\OOP.DSAI.20212.25-main\\src\\controller\\Help.txt"));
 			while (input.hasNext()) {
 	               ta.appendText(input.nextLine() + '\n');
 			}

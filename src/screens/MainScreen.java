@@ -1,10 +1,15 @@
 package screens;
 
 
-
+import sortingalgorithms.*;
+import java.io.IOException;
 import controller.MainScreenController;
+import controller.SortAlgoController;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -35,7 +40,7 @@ public class MainScreen extends Application{
 		e.printStackTrace();
 	}
 }	
-
+@FXML
 public void exitPressed(Stage stage){	
 	
 	Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -47,7 +52,11 @@ public void exitPressed(Stage stage){
 		stage.close();
 	} 
 }
+
+
 	public static void main(String[] args) {
 		launch(args);
 	}
+
+	
 }
