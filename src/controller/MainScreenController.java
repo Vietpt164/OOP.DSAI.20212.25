@@ -1,10 +1,15 @@
 package controller;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,7 +30,7 @@ public class MainScreenController {
 	@FXML
 	Menu myhelpmenu;
 	@FXML
-	Pane mypane1;
+	public static Pane mypane1;
 	@FXML
 	Pane mypane2;
 	@FXML
@@ -51,6 +56,53 @@ public class MainScreenController {
 		}
 	public void btnHelpPressed(ActionEvent event) {
 		new HelpController();
+	}
+	@FXML
+	public void mergesortPressed(ActionEvent event) {
+		SortAlgoController.sort = "MergeSort" ;
+		try {
+		
+			final String CART_FXML_FILE_PATH = "/screens/SortAlgoScreen.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
+			fxmlLoader.setController(new SortAlgoController());
+			Parent root = fxmlLoader.load();
+			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Sorting Algorithm");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void radixsortPressed(ActionEvent event) {
+		SortAlgoController.sort = "RadixSort" ;
+		try {
+			final String CART_FXML_FILE_PATH = "/screens/SortAlgoScreen.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
+			fxmlLoader.setController(new SortAlgoController());
+			Parent root = fxmlLoader.load();
+			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Sorting Algorithm");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void countingsortPressed(ActionEvent event) {
+		SortAlgoController.sort = "CountingSort" ;
+		try {
+			final String CART_FXML_FILE_PATH = "/screens/SortAlgoScreen.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
+			fxmlLoader.setController(new SortAlgoController());
+			Parent root = fxmlLoader.load();
+			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Sorting Algorithm");
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	}
 
