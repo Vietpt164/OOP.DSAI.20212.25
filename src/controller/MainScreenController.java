@@ -62,8 +62,8 @@ public class MainScreenController {
 		SortAlgoController.sort = "MergeSort" ;
 		try {
 		
-			final String CART_FXML_FILE_PATH = "/screens/SortAlgoScreen.fxml";
-			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
+			final String SORTSCREEN_FXML_FILE_PATH = "/screens/SortAlgoScreen.fxml";
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(SORTSCREEN_FXML_FILE_PATH));
 			fxmlLoader.setController(new SortAlgoController());
 			Parent root = fxmlLoader.load();
 			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
