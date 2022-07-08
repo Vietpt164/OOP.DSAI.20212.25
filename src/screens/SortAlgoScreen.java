@@ -34,7 +34,7 @@ public class SortAlgoScreen extends Application{
 	}
 }	
 
-public void logoutPressed(Stage stage){	
+	public void logoutPressed(Stage stage){	
 	
 	Alert alert = new Alert(AlertType.CONFIRMATION);
 	alert.setTitle("Logout");

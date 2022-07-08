@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <Pane fx:id="mypane1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -34,7 +34,7 @@
          </children></Pane>
    </center>
    <top>
-      <ToolBar prefHeight="52.0" prefWidth="926.0" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="50.0" BorderPane.alignment="CENTER">
         <items>
           <Button fx:id="helpBtn" mnemonicParsing="false" onAction="#btnHelpPressed" prefHeight="34.0" prefWidth="60.0" text="Help">
                <font>
