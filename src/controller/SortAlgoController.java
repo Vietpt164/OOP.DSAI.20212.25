@@ -71,10 +71,10 @@ public class SortAlgoController {
     private VBox myvbox2;
 
     @FXML
-    private RadioButton rButton1;
+    private RadioButton randomButton;
 
     @FXML
-    private RadioButton rButton2;
+    private RadioButton selfCreateButton;
 
     @FXML
     private ToggleGroup random;
@@ -117,28 +117,30 @@ public class SortAlgoController {
 
     @FXML
     void startButtonPressed(ActionEvent event) {
-		String db = array_text_field.getText();
-		int[] array= new int[8];
-		if (rButton2.isSelected()) {
-			for (int i = 0; i < db.length();i+=2) {
-				array[i] = Character.getNumericValue(db.charAt(i));
-				if (sort == "RadixSort") {
-					new RadixSort(array,mypane1,instructfield);
-					instructfield.setText(db);
-				} else if (sort == "MergeSort") {
-					new MergeSort(array,mypane1,instructfield);
-				} else {
-					new CountingSort(array,mypane1,instructfield);
-				}
-			}
-		}else if (rButton1.isSelected()) {
-			Random rand = new Random();
-			for (int i = 0; i < 8; i++) {
-				array[i] = rand.nextInt(9999);
+		
+    	int[] array= new int[8];
+		
+		if (selfCreateButton.isSelected()) {
+			String db = array_text_field.getText();
+			String[] strArray = db.split(",");
+			for (int i = 0; i < strArray.length ; i++) {
+				array[i] = Integer.parseInt(strArray[i].trim());
 			}
 			if (sort == "RadixSort") {
 				new RadixSort(array,mypane1,instructfield);
-				instructfield.setText(db);
+			} else if (sort == "MergeSort") {
+				new MergeSort(array,mypane1,instructfield);
+			} else {
+				new CountingSort(array,mypane1,instructfield);
+			}
+			
+		} else if (randomButton.isSelected()) {
+			Random rand = new Random();
+			for (int i = 0; i < 8; i++) {
+				array[i] = rand.nextInt(100);
+			}
+			if (sort == "RadixSort") {
+				new RadixSort(array,mypane1,instructfield);
 			} else if (sort == "MergeSort") {
 				new MergeSort(array,mypane1,instructfield);
 			} else {

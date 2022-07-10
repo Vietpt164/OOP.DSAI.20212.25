@@ -24,7 +24,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <RadioButton fx:id="rButton1" mnemonicParsing="false" text="Random">
+            <RadioButton fx:id="randomButton" mnemonicParsing="false" text="Random">
                <toggleGroup>
                   <ToggleGroup fx:id="random" />
                </toggleGroup>
@@ -32,7 +32,7 @@
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="rButton2" mnemonicParsing="false" prefHeight="18.0" prefWidth="107.0" text="Self-create" toggleGroup="$random">
+            <RadioButton fx:id="selfCreateButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="107.0" text="Self-create" toggleGroup="$random">
                <font>
                   <Font size="14.0" />
                </font></RadioButton>
