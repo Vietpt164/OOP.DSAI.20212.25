@@ -16,8 +16,8 @@ public class RadixSort extends SortingAlgo{
 	public RadixSort(int[] input_array, Pane input_pane, TextArea input_text_area) {
 		super(input_array, input_pane, input_text_area);
 		for (int i =0; i<8;i++) {
-			Square bruh = drawSquare(i, array[i]);
-			bruh.setAxis(30+40*i, 25);
+			Square bruh = drawSquare(array[i]);
+			bruh.setAxis(100+65*i, 50);
 			pane.getChildren().add(bruh);
 		}
 		int m = getMax(array, arr_length);
@@ -38,9 +38,9 @@ public class RadixSort extends SortingAlgo{
 	static void countSort(int arr[], int n, int exp) {
 	if (exp == 1){
 		for (int i = 0 ; i < 10; i++) {
-			Square bruh = drawSquare(i, i);
+			Square bruh = drawSquare(i);
 			bruh.setFill("#e8e8e8");
-			bruh.setAxis(15+40*i, 250);
+			bruh.setAxis(50+65*i, 250);
 			pane.getChildren().add(bruh);
 		}
 	}
@@ -70,9 +70,6 @@ public class RadixSort extends SortingAlgo{
 		
 	}
 	
-	private static Square drawSquare(int i, int value) {
-		Square burh = new Square(value, i);
-		return burh;
-	}
+	
 }
 

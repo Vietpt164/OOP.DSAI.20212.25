@@ -1,5 +1,6 @@
 package sortingalgorithms;
 
+import elements.Square;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 
@@ -20,5 +21,11 @@ public abstract class SortingAlgo {
 		pane = input_pane;
 		text_area = input_text_area;
 		array = array_og.clone();
-}
+	}
+	
+	public static Square drawSquare(int value) {
+		Square square = new Square(value);
+		return square;
+	}
+	
 }
