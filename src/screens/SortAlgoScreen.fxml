@@ -2,91 +2,66 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="925.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <Pane fx:id="mypane1" prefHeight="446.0" prefWidth="728.0" BorderPane.alignment="CENTER" />
-   </center>
+<BorderPane fx:id="myborderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar fx:id="mymenubar" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="myhelpmenu" mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem fx:id="helpmenuitem" mnemonicParsing="false" onAction="#btnHelpPressed" text="Open for Help :&gt;" />
+                  <MenuItem mnemonicParsing="false" onAction="#backmenuitem" text="Back " />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+   </top>
    <left>
-      <VBox fx:id="myvbox1" prefHeight="446.0" prefWidth="102.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="myvbox1" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="arraytext" prefHeight="17.0" prefWidth="100.0" text="Array :">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <RadioButton fx:id="randomButton" mnemonicParsing="false" text="Random">
+            <Label fx:id="arraytext" prefHeight="17.0" prefWidth="100.0" text="Array :" />
+            <RadioButton fx:id="rButton1" mnemonicParsing="false" text="Random">
                <toggleGroup>
                   <ToggleGroup fx:id="random" />
                </toggleGroup>
-               <font>
-                  <Font size="14.0" />
-               </font>
             </RadioButton>
-            <RadioButton fx:id="selfCreateButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="107.0" text="Self-create" toggleGroup="$random">
-               <font>
-                  <Font size="14.0" />
-               </font></RadioButton>
-            <Label fx:id="arraylengthtext" prefHeight="43.0" prefWidth="90.0" text="Array length ">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Label fx:id="arraylengthtext1" prefHeight="22.0" prefWidth="90.0" text="is fixed to 8">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <Region prefHeight="306.0" prefWidth="102.0" />
-            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="44.0" prefWidth="102.0" text="Start">
-               <font>
-                  <Font size="16.0" />
-               </font></Button>
+            <RadioButton fx:id="rButton2" mnemonicParsing="false" prefHeight="0.0" prefWidth="91.0" text="Self-create" toggleGroup="$random" />
+            <Label fx:id="arraylengthtext" text="Array length " />
+            <Label fx:id="arraylengthtext1" text="is fixed to 8" />
+            <Region prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="startButton" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="39.0" prefWidth="100.0" text="Start" />
          </children>
       </VBox>
    </left>
    <right>
-      <VBox fx:id="myvbox2" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="myvbox2" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#logoutPressed" prefHeight="26.0" prefWidth="101.0" text="LogOut" />
+         </children></VBox>
    </right>
    <bottom>
-      <Pane fx:id="mypane2" prefHeight="100.0" prefWidth="926.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="mypane2" prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="44.0" layoutY="39.0" text="Array:">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-            <TextField fx:id="array_text_field" layoutX="106.0" layoutY="37.0" prefHeight="25.0" prefWidth="206.0" />
-            <TextArea fx:id="instructfield" layoutX="651.0" layoutY="1.0" prefHeight="92.0" prefWidth="261.0" />
+            <Label layoutX="14.0" layoutY="14.0" text="Array:" />
+            <TextField fx:id="array_text_field" layoutX="64.0" layoutY="10.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextArea fx:id="instructfield" layoutX="393.0" layoutY="-1.0" prefHeight="98.0" prefWidth="207.0" />
+            <Button layoutX="111.0" layoutY="48.0" mnemonicParsing="false" onAction="#prevPush" text="prev" />
+            <Button layoutX="209.0" layoutY="48.0" mnemonicParsing="false" onAction="#nextPush" text="next" />
+            <Label fx:id="lb" layoutX="169.0" layoutY="52.0" text="Label" />
          </children>
       </Pane>
    </bottom>
-   <top>
-      <ToolBar prefHeight="50.0" BorderPane.alignment="CENTER">
-        <items>
-          <Button fx:id="backButton" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="34.0" prefWidth="60.0" text="Back">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="helpButton" layoutX="10.0" layoutY="12.0" mnemonicParsing="false" onAction="#helpButtonPressed" prefHeight="34.0" prefWidth="60.0" text="Help">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-            <Region prefHeight="0.0" prefWidth="717.0" />
-            <Button fx:id="exitButton" layoutX="74.0" layoutY="12.0" mnemonicParsing="false" onAction="#exitButtonPressed" prefHeight="34.0" prefWidth="60.0" text="Exit">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
-        </items>
-      </ToolBar>
-   </top>
+   <center>
+      <Pane fx:id="mypane1" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
 </BorderPane>
