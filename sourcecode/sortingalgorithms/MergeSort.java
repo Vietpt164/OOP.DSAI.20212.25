@@ -136,7 +136,7 @@ public class MergeSort extends SortingAlgo{
 			return;
 		}
 		displayStep(curr_step);
-		++curr_step;
+		curr_step++;
 	}
 
 	public void previousStep() {

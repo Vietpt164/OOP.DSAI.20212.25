@@ -51,41 +51,51 @@
    <bottom>
       <Pane fx:id="mypane2" prefHeight="103.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="44.0" layoutY="39.0" text="Array:">
+            <Label layoutX="31.0" layoutY="37.0" text="Array:">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font></Label>
-            <TextField fx:id="array_text_field" layoutX="106.0" layoutY="37.0" prefHeight="25.0" prefWidth="206.0" />
-            <TextArea fx:id="instructfield" layoutX="897.0" layoutY="2.0" prefHeight="92.0" prefWidth="261.0" />
-            <Button fx:id="startButton" layoutX="346.0" layoutY="28.0" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: lightblue;" text="Start">
+            <TextField fx:id="array_text_field" layoutX="91.0" layoutY="34.0" prefHeight="33.0" prefWidth="155.0" />
+            <TextArea fx:id="instructfield" layoutX="933.0" layoutY="4.0" prefHeight="92.0" prefWidth="261.0" />
+            <Button fx:id="startButton" layoutX="258.0" layoutY="29.0" mnemonicParsing="false" onAction="#startButtonPressed" prefHeight="44.0" prefWidth="106.0" style="-fx-background-color: lightblue;" text="START">
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="resetButton" alignment="CENTER" contentDisplay="CENTER" layoutX="475.0" layoutY="29.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&lt;&lt;" textAlignment="CENTER" textFill="#3c90f7">
+            <Button fx:id="resetButton" alignment="CENTER" contentDisplay="CENTER" layoutX="542.0" layoutY="29.0" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="45.0" prefWidth="60.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&lt;&lt;" textAlignment="CENTER" textFill="#3c90f7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="previousButton" layoutX="554.0" layoutY="28.0" mnemonicParsing="false" onAction="#previousButtonPressed" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&lt;" textFill="#3c90f7">
+            <Button fx:id="previousButton" layoutX="615.0" layoutY="29.0" mnemonicParsing="false" onAction="#previousButtonPressed" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&lt;" textFill="#3c90f7">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="nextButton" layoutX="745.0" layoutY="30.0" mnemonicParsing="false" onAction="#nextButtonPressed" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&gt;" textFill="#3c90f7">
+            <Button fx:id="nextButton" layoutX="798.0" layoutY="30.0" mnemonicParsing="false" onAction="#nextButtonPressed" prefHeight="45.0" prefWidth="45.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&gt;" textFill="#3c90f7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="finishButton" layoutX="803.0" layoutY="30.0" mnemonicParsing="false" onAction="#finishButtonPressed" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&gt;&gt;" textFill="#3c90f7">
+            <Button fx:id="finishButton" layoutX="855.0" layoutY="30.0" mnemonicParsing="false" onAction="#finishButtonPressed" prefHeight="45.0" prefWidth="64.0" style="-fx-background-color: white; -fx-border-color: lightblue;" text="&gt;&gt;" textFill="#3c90f7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="stepLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="618.0" layoutY="30.0" prefHeight="43.0" prefWidth="109.0" style="-fx-border-color: lightblue;" textFill="#3c90f7">
+            <Label fx:id="stepLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="674.0" layoutY="30.0" prefHeight="43.0" prefWidth="109.0" style="-fx-border-color: lightblue;" textFill="#3c90f7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="runButton" layoutX="380.0" layoutY="30.0" mnemonicParsing="false" onAction="#runButtonPressed" prefHeight="44.0" prefWidth="61.0" style="-fx-background-color: lightblue;" text="RUN">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="stopButton" layoutX="458.0" layoutY="30.0" mnemonicParsing="false" onAction="#stopButtonPressed" prefHeight="44.0" prefWidth="61.0" style="-fx-background-color: lightblue;" text="STOP">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </bottom>

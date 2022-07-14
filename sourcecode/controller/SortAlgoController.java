@@ -3,7 +3,9 @@ package controller;
 import java.io.IOException;
 import java.util.Random;
 
+import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -18,7 +20,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import sortingalgorithms.CountingSort;
 import sortingalgorithms.MergeSort;
 import sortingalgorithms.RadixSort;
@@ -95,7 +103,14 @@ public class SortAlgoController {
     
     @FXML
     private Label stepLabel;
-	private boolean resetFlag;
+    
+    @FXML
+    private Button runButton;
+    
+    @FXML
+    private Button stopButton;
+	
+    private boolean runFlag = true;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -153,7 +168,7 @@ public class SortAlgoController {
     void resetButtonPressed(ActionEvent event) {
     	sortingAlgo.displayInitialArray();
 		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
-		resetFlag = true;
+		runFlag = false;
     }
 
     @FXML
@@ -183,10 +198,50 @@ public class SortAlgoController {
 			sortingAlgo = new CountingSort(array,mypane1,instructfield);
 		}
 		
-		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+		stepLabel.setText("" + (sortingAlgo.getCurr_step()+1)  + "/" + sortingAlgo.getTotal_step());
 		sortingAlgo.displayInitialArray();
 		
     }
+    
+    @FXML
+    void runButtonPressed(ActionEvent event) {
+		if (sortingAlgo.getCurr_step() == sortingAlgo.getTotal_step()) {
+			sortingAlgo.displaySortedArray();
+			return;
+		}
+		if (!runFlag) {
+			runFlag = true;
+			return;
+		}
+		nextButtonPressed(new ActionEvent());
+		Circle s = new Circle(0, 0, 3);
+		s.setFill(Color.WHITE);
+		s.setStroke(Color.WHITE);
+		mypane1.getChildren().add(s);
+
+		Path path = new Path();
+		path.getElements().add(new MoveTo(0, 0));
+		path.getElements().add(new LineTo(mypane1.getWidth(), 0));
+
+		PathTransition delay = new PathTransition();
+		delay.setDelay(Duration.seconds(0));
+		delay.setDuration(Duration.seconds(0.5));
+		delay.setNode(s);
+		delay.setPath(path);
+		delay.setOnFinished((EventHandler<ActionEvent>)new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(final ActionEvent actionEvent) {
+				runButtonPressed(new ActionEvent());
+			}
+		});
+		delay.play();
+	}
+    
+    @FXML
+    void stopButtonPressed(ActionEvent event) {
+    	runFlag = false;
+    }
+
    
 
 }
