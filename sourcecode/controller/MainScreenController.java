@@ -68,7 +68,9 @@ public class MainScreenController {
 			Parent root = fxmlLoader.load();
 			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
 			stage.setTitle("Sorting Algorithm");
+			
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -83,6 +85,7 @@ public class MainScreenController {
 			Parent root = fxmlLoader.load();
 			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
 			stage.setTitle("Sorting Algorithm");
 			stage.show();
 		} catch (IOException e) {
@@ -98,6 +101,7 @@ public class MainScreenController {
 			Parent root = fxmlLoader.load();
 			Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 			stage.setScene(new Scene(root));
+			stage.centerOnScreen();
 			stage.setTitle("Sorting Algorithm");
 			stage.show();
 		} catch (IOException e) {

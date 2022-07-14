@@ -2,13 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.util.Random;
-import screens.*;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -25,12 +22,17 @@ import javafx.stage.Stage;
 import sortingalgorithms.CountingSort;
 import sortingalgorithms.MergeSort;
 import sortingalgorithms.RadixSort;
+import sortingalgorithms.SortingAlgo;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 
 public class SortAlgoController {
-
+	
+	SortingAlgo sortingAlgo;
 	public static String sort;
 	Stage stage;
-	
+
     @FXML
     private TextField array_text_field;
 
@@ -48,6 +50,9 @@ public class SortAlgoController {
 
     @FXML
     private Button exitButton;
+
+    @FXML
+    private Button finishButton;
 
     @FXML
     private Button helpButton;
@@ -68,19 +73,29 @@ public class SortAlgoController {
     private VBox myvbox1;
 
     @FXML
-    private VBox myvbox2;
+    private Button nextButton;
 
     @FXML
-    private RadioButton randomButton;
-
-    @FXML
-    private RadioButton selfCreateButton;
+    private Button previousButton;
 
     @FXML
     private ToggleGroup random;
 
     @FXML
+    private RadioButton randomButton;
+
+    @FXML
+    private Button resetButton;
+
+    @FXML
+    private RadioButton selfCreateButton;
+
+    @FXML
     private Button startButton;
+    
+    @FXML
+    private Label stepLabel;
+	private boolean resetFlag;
 
     @FXML
     void backBtnPressed(ActionEvent event) {
@@ -111,13 +126,38 @@ public class SortAlgoController {
     }
 
     @FXML
+    void finishButtonPressed(ActionEvent event) {
+    	sortingAlgo.displaySortedArray();
+		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+    }
+
+    @FXML
     void helpButtonPressed(ActionEvent event) {
     	new HelpController();
     }
 
     @FXML
+    void nextButtonPressed(ActionEvent event) {
+    	sortingAlgo.nextStep();
+    	stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+    }
+
+    @FXML
+    void previousButtonPressed(ActionEvent event) {
+    	sortingAlgo.previousStep();
+		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+	}
+    
+
+    @FXML
+    void resetButtonPressed(ActionEvent event) {
+    	sortingAlgo.displayInitialArray();
+		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+		resetFlag = true;
+    }
+
+    @FXML
     void startButtonPressed(ActionEvent event) {
-		
     	int[] array= new int[8];
 		
 		if (selfCreateButton.isSelected()) {
@@ -126,29 +166,28 @@ public class SortAlgoController {
 			for (int i = 0; i < strArray.length ; i++) {
 				array[i] = Integer.parseInt(strArray[i].trim());
 			}
-			if (sort == "RadixSort") {
-				new RadixSort(array,mypane1,instructfield);
-			} else if (sort == "MergeSort") {
-				new MergeSort(array,mypane1,instructfield);
-			} else {
-				new CountingSort(array,mypane1,instructfield);
-			}
+			
 			
 		} else if (randomButton.isSelected()) {
 			Random rand = new Random();
 			for (int i = 0; i < 8; i++) {
 				array[i] = rand.nextInt(100);
 			}
-			if (sort == "RadixSort") {
-				new RadixSort(array,mypane1,instructfield);
-			} else if (sort == "MergeSort") {
-				new MergeSort(array,mypane1,instructfield);
-			} else {
-				new CountingSort(array,mypane1,instructfield);
-			}
 		}
-	}
- 
+		
+		if (sort == "RadixSort") {
+			sortingAlgo = new RadixSort(array,mypane1,instructfield);
+		} else if (sort == "MergeSort") {
+			sortingAlgo = new MergeSort(array,mypane1,instructfield);		
+		} else {
+			sortingAlgo = new CountingSort(array,mypane1,instructfield);
+		}
+		
+		stepLabel.setText("" + sortingAlgo.getCurr_step() + "/" + sortingAlgo.getTotal_step());
+		sortingAlgo.displayInitialArray();
+		
+    }
+   
 
 }
 

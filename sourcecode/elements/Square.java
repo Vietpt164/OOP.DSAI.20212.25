@@ -11,7 +11,16 @@ import javafx.util.Duration;
 import javafx.scene.paint.Color;
 
 public class Square extends StackPane {
-	public Rectangle rec = new Rectangle();
+	private Rectangle rec = new Rectangle();
+	private int inputNumber; 
+	
+	public int getInputNumber() {
+		return inputNumber;
+	}
+
+	public void setInputNumber(int inputNumber) {
+		this.inputNumber = inputNumber;
+	}
 
 	public TranslateTransition move(double X, double Y) {
 		TranslateTransition t = new TranslateTransition();
@@ -38,6 +47,31 @@ public class Square extends StackPane {
 		return t;
 	}
 	
+	public Square(int inputNumber, double x, double y, Color recFill, Color textFill) {
+		this.inputNumber = inputNumber;
+		
+		rec.setWidth(60.0f); 
+	    rec.setHeight(60.0f); 
+	    rec.setFill(recFill);
+	    rec.setStroke(Color.BLACK);
+	    getChildren().add(rec);
+	    
+	    Label label = new Label();
+	    if (inputNumber >= 0) {
+	    	label.setText(Integer.toString(inputNumber));
+	    	
+	    } else {
+	    	label.setText("");
+	    	//rec.setStroke(Color.WHITE);
+	    }
+	    label.setFont(Font.font("verdana", FontPosture.REGULAR, 14));;
+	    label.setTextFill(textFill);
+	    getChildren().add(label);
+	    
+	    setLayoutX(x);
+	    setLayoutY(y);
+	}
+
 	public Square(int strInputNumber) {
 		rec.setWidth(60.0f); 
 	    rec.setHeight(60.0f); 
@@ -56,4 +90,5 @@ public class Square extends StackPane {
 	public void setFill(String fill) {
 		rec.setFill(Color.web(fill,1.0));
 	}
+
 }
