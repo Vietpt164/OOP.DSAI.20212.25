@@ -16,10 +16,10 @@ public class MergeSort extends SortingAlgo{
 	private double[][] steps;
 	private Color[] initColor = {Color.LIGHTBLUE, Color.BLACK };
 	private final String[] instructions;
-	
-   	private void Check_valid_value(int[] elements) {
-        	int min = Integer.MAX_VALUE;
-        	int max = Integer.MIN_VALUE;
+	private static final int MAX_INPUT_SIZE = 1 << 28;
+	private void Check_valid_value(int[] elements) {
+		int MAX_VALUE_TO_SORT = Integer.MAX_VALUE;
+		int MIN_VALUE_TO_SORT = Integer.MIN_VALUE;
 		for (int element : elements) {
 		  if (element > MAX_VALUE_TO_SORT) {
 		    throw new IllegalArgumentException(
@@ -31,8 +31,8 @@ public class MergeSort extends SortingAlgo{
 		  }
 		  System.out.print("All values are valid");
 		}}
-    @Override
-    	public boolean isSuitableForInputSize(int size) {
+	    @Override
+	public boolean isSuitableForInputSize(int size) {
 		  if (size > MAX_INPUT_SIZE){
 		    throw new IllegalArgumentException(
 			"Too Much Values in Array.Please Try Again !");
