@@ -7,6 +7,8 @@ import elements.Square;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 
 public class MergeSort extends SortingAlgo{
 	private int[] cloneArr;
@@ -27,13 +29,12 @@ public class MergeSort extends SortingAlgo{
 		//sort the array beforehand
 		sort(0, arr_length - 1, startX, pane.getWidth(), startY); 
 		
-		instructions = new String[6];
-		instructions[0] = "Split the selected array (green) (as evenly as possible)";
-		instructions[1] = "Left array of length 1 cannot be split, ready for merge";
-		instructions[2] = "Right array of length 1 cannot be split, ready for merge";
-		instructions[3] = "Put the minimum of the two selected value (yellow) into the sorted array";
-		instructions[4] = "Left array is empty, copy all values from the remaining array into the sorted array";
-		instructions[5] = "Right array is empty, copy all values from the remaining array into the sorted array";
+		instructions = new String[5];
+		instructions[0] = "Split the selected array (green)\n(as evenly as possible)";
+		instructions[1] = "Array of length 1 cannot be split,\nready for merge";
+		instructions[2] = "Put the minimum\nof the two selected value (yellow)\ninto the sorted array";
+		instructions[3] = "Left array is empty,\ncopy all values from the remaining array\ninto the sorted array";
+		instructions[4] = "Right array is empty,\ncopy all values from the remaining array\ninto the sorted array";
 	}
 
 	private void merge(int left, int right, int mid, double midX, double leftOy, double leftLeftOx, double leftRightOx) {
@@ -41,42 +42,42 @@ public class MergeSort extends SortingAlgo{
 
 		int left_index = left;
 		int right_index = mid + 1;
-		assignStep(left, right, midX, leftOy, 3, 3);
+		assignStep(left, right, midX, leftOy, 3, 2);
 
 		for (int i = 0; i < (right - left + 1); ++i) {
 			if (left_index > mid) {
 				// all element from left array has been taken.
-				tempArr[i] = this.array[right_index++];
-				assignStep(-1, -1, leftRightOx, leftOy + 100, 3, 4);
-				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 4);
-				if (right_index < right + 1) {
-					leftRightOx += 60;
-					assignStep(-1, this.array[right_index], leftRightOx, leftOy + 100, 1, 4);
-				}
-			} else if (right_index > right) {
-				// all element from right array has been taken.
-				tempArr[i] = this.array[left_index++];
-				assignStep(-1, -1, leftLeftOx, leftOy + 100, 3, 5);
-				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 5);
-				if (left_index < mid + 1) {
-					leftLeftOx += 60;
-					assignStep(-1, this.array[left_index], leftLeftOx, leftOy + 100, 1, 5);
-				}
-			} else if (this.array[left_index] < this.array[right_index]) {
-				tempArr[i] = this.array[left_index++];
-				assignStep(-1, -1, leftLeftOx, leftOy + 100, 3, 3);
-				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 3);
-				if (left_index < mid + 1) {
-					leftLeftOx += 60;
-					assignStep(-1, this.array[left_index], leftLeftOx, leftOy + 100, 1, 3);
-				}
-			} else if (this.array[left_index] >= this.array[right_index]) {
 				tempArr[i] = this.array[right_index++];
 				assignStep(-1, -1, leftRightOx, leftOy + 100, 3, 3);
 				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 3);
 				if (right_index < right + 1) {
 					leftRightOx += 60;
 					assignStep(-1, this.array[right_index], leftRightOx, leftOy + 100, 1, 3);
+				}
+			} else if (right_index > right) {
+				// all element from right array has been taken.
+				tempArr[i] = this.array[left_index++];
+				assignStep(-1, -1, leftLeftOx, leftOy + 100, 3, 4);
+				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 4);
+				if (left_index < mid + 1) {
+					leftLeftOx += 60;
+					assignStep(-1, this.array[left_index], leftLeftOx, leftOy + 100, 1, 4);
+				}
+			} else if (this.array[left_index] < this.array[right_index]) {
+				tempArr[i] = this.array[left_index++];
+				assignStep(-1, -1, leftLeftOx, leftOy + 100, 3, 2);
+				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 2);
+				if (left_index < mid + 1) {
+					leftLeftOx += 60;
+					assignStep(-1, this.array[left_index], leftLeftOx, leftOy + 100, 1, 2);
+				}
+			} else if (this.array[left_index] >= this.array[right_index]) {
+				tempArr[i] = this.array[right_index++];
+				assignStep(-1, -1, leftRightOx, leftOy + 100, 3, 2);
+				assignStep(-1, tempArr[i], midX + (i) * 60, leftOy, 2, 2);
+				if (right_index < right + 1) {
+					leftRightOx += 60;
+					assignStep(-1, this.array[right_index], leftRightOx, leftOy + 100, 1, 2);
 				}
 			}
 		}
@@ -102,7 +103,7 @@ public class MergeSort extends SortingAlgo{
 			
 			// select and ready to merge
 			assignStep(-1, this.array[left], startLeftX, leftY + 100, 1, 1); 
-			assignStep(-1, this.array[mid + 1], startRightX, leftY + 100, 1, 2); 
+			assignStep(-1, this.array[mid + 1], startRightX, leftY + 100, 1, 1); 
 
 			merge(left, right, mid, midX - (right - left + 1) * 30, leftY, startLeftX, startRightX);
 		}
@@ -193,6 +194,7 @@ public class MergeSort extends SortingAlgo{
 			}
 		}
 		text_area.setText(instructions[(int) steps[5][curr_step]]);
+		text_area.setFont(Font.font("verdana", FontPosture.REGULAR, 14));
 	}
 }
 
