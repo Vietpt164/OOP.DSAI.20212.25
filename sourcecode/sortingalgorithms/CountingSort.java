@@ -4,13 +4,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 
 public class CountingSort extends SortingAlgo{
-	
+	private static final int MAX_INPUT_SIZE = 1 << 28;
 	public void CountingSort() {
 		
 	}
 	private void Check_valid_value(int[] elements) {
-		int min = Integer.MAX_VALUE;
-		int max = Integer.MIN_VALUE;
+		int MAX_VALUE_TO_SORT = Integer.MAX_VALUE;
+		int MIN_VALUE_TO_SORT = Integer.MIN_VALUE;
 		for (int element : elements) {
 		  if (element > MAX_VALUE_TO_SORT) {
 		    throw new IllegalArgumentException(
