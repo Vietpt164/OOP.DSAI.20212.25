@@ -118,6 +118,16 @@ public class RadixSort extends SortingAlgo{
 	public static int getCurrent() {
 		return n;
 	}
+	public static int getMaxStep() {
+		if (getMax(array, arr_length) < 10) {
+			return 1;
+		} else if (getMax(array, arr_length) < 100 && getMax(array, arr_length) >= 10) {
+			return 2;
+		}else if (getMax(array, arr_length) < 1000 && getMax(array, arr_length) >= 100) {
+			return 3;
+	} else {
+		return 4;
 	}
+	}}
 
 

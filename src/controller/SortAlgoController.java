@@ -94,7 +94,7 @@ public class SortAlgoController {
 		if (sort == "RadixSort") {
 			new RadixSort(array,mypane1,instructfield,lb);
 			instructfield.setText("Count sorting the first time !!!!");
-			lb.setText(1 + "/" + 4);
+			lb.setText(1 + "/" + RadixSort.getMaxStep());
 		} else if (sort == "MergeSort") {
 			new MergeSort(array,mypane1,instructfield);
 		}else {
