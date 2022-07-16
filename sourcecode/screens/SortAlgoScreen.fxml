@@ -24,7 +24,7 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <RadioButton fx:id="randomButton" mnemonicParsing="false" text="Random">
+            <RadioButton fx:id="randomButton" mnemonicParsing="false" selected="true" text="Random">
                <toggleGroup>
                   <ToggleGroup fx:id="random" />
                </toggleGroup>
