@@ -174,40 +174,63 @@ public class SortAlgoController {
     @FXML
     void startButtonPressed(ActionEvent event) {
     	int[] array= new int[8];
+    	try {
 		
-		if (selfCreateButton.isSelected()) {
-			String db = array_text_field.getText();
-			String[] strArray = db.split(",");
-			for (int i = 0; i < strArray.length ; i++) {
-				array[i] = Integer.parseInt(strArray[i].trim());
-			}
-			
-			
-		} else if (randomButton.isSelected()) {
-			Random rand = new Random();
-			for (int i = 0; i < 8; i++) {
-				if (sort.equals("RadixSort")) {
-					array[i] = rand.nextInt(10000);
-				} else if (sort.equals("MergeSort")) {
-					array[i] = rand.nextInt(100);
-				} else {
-					array[i] = rand.nextInt(10);
+			if (selfCreateButton.isSelected()) {
+				String db = array_text_field.getText().trim();
+				if (db.isEmpty()) {
+					throw new NullPointerException("Please input your array to start the visualization");
+				}
+				String[] strArray = db.split(",");
+				
+				
+				for (int i = 0; i < strArray.length ; i++) {
+					try {
+						array[i] = Integer.parseInt(strArray[i].trim());
+						if (array[i] < 0)
+							throw new NumberFormatException("Array element have to be non-negative");
+					} catch (NumberFormatException e) {
+						throw e;
+					}
+				}
+				
+				if (strArray.length != 8) {
+					throw new Exception("Please input an array of size 8");
+				}
+				
+				
+			} else if (randomButton.isSelected()) {
+				Random rand = new Random();
+				for (int i = 0; i < 8; i++) {
+					if (sort.equals("RadixSort")) {
+						array[i] = rand.nextInt(10000);
+					} else if (sort.equals("MergeSort")) {
+						array[i] = rand.nextInt(100);
+					} else {
+						array[i] = rand.nextInt(10);
+					}
 				}
 			}
-		}
-		
-		if (sort == "RadixSort") {
-			sortingAlgo = new RadixSort(array,mypane1,instructfield, stepLabel);
-			instructfield.setText("Count sorting the first time !!!!");
-			stepLabel.setText(1 + "/" + sortingAlgo.getTotal_step());
-		} else if (sort == "MergeSort") {
-			sortingAlgo = new MergeSort(array,mypane1,instructfield);
-		} else {
-			sortingAlgo = new CountingSort(array,mypane1,instructfield);
-		}
-		
-		stepLabel.setText("" + (sortingAlgo.getCurr_step()+1)  + "/" + sortingAlgo.getTotal_step());
-		sortingAlgo.displayInitialArray();
+			
+			if (sort == "RadixSort") {
+				sortingAlgo = new RadixSort(array,mypane1,instructfield, stepLabel);
+				instructfield.setText("Count sorting the first time !!!!");
+				stepLabel.setText(1 + "/" + sortingAlgo.getTotal_step());
+			} else if (sort == "MergeSort") {
+				sortingAlgo = new MergeSort(array,mypane1,instructfield);
+			} else {
+				sortingAlgo = new CountingSort(array,mypane1,instructfield);
+			}
+			
+			stepLabel.setText("" + (sortingAlgo.getCurr_step()+1)  + "/" + sortingAlgo.getTotal_step());
+			sortingAlgo.displayInitialArray();
+    	} catch (Exception e) {
+    		Alert input_error = new Alert(AlertType.ERROR);
+    		input_error.setTitle("ERROR");
+    		input_error.setHeaderText("Invalid input array");
+    		input_error.setContentText(e.getMessage());
+    		input_error.show();
+    	}
 		
     }
     

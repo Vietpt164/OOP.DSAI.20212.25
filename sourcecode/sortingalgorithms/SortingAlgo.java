@@ -31,6 +31,8 @@ public abstract class SortingAlgo implements Visualizable {
 		pane = input_pane;
 		text_area = input_progress_area;
 		array = array_og.clone();
+		Check_valid_value(input_array);
+        isSuitableForInputSize(input_array.length);
 	}
 	
 	public SortingAlgo(int[] input_array, Pane input_pane, TextArea input_progress_area, Label input_lb) {
@@ -40,6 +42,8 @@ public abstract class SortingAlgo implements Visualizable {
 		text_area = input_progress_area;
 		array = array_og.clone();
 		lb = input_lb;
+		Check_valid_value(input_array);
+        isSuitableForInputSize(input_array.length);
 	}
 	
 	public static Square drawSquare(int value) {
@@ -70,7 +74,6 @@ public abstract class SortingAlgo implements Visualizable {
 		    throw new IllegalArgumentException(
 			"Element " + element + " is less than minimum " + MIN_VALUE_TO_SORT);
 		  }
-		  System.out.print("All values are valid");
 		}}
 
 	public void isSuitableForInputSize(int size) {

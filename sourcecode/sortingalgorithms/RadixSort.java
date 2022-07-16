@@ -21,8 +21,6 @@ public class RadixSort extends SortingAlgo{
 	//private static int n;
 	public RadixSort(int[] input_array, Pane input_pane, TextArea input_text_area, Label input_lb) {
 		super(input_array, input_pane, input_text_area, input_lb);
-		Check_valid_value(input_array);
-	    isSuitableForInputSize(input_array.length);
 		
 		final int m = getMax(array, arr_length);
 		for (int i =0; i<8;i++) {

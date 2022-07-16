@@ -20,8 +20,6 @@ public class MergeSort extends SortingAlgo{
 	public MergeSort(int[] input_array, Pane inputPane, TextArea input_progress_area) {
 		super(input_array, inputPane, input_progress_area);
 		this.array = input_array;
-		Check_valid_value(input_array);
-        isSuitableForInputSize(input_array.length);
 
 		steps = new double[6][160];
 		this.startX = 0;
