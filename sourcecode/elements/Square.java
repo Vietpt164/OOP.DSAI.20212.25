@@ -72,12 +72,12 @@ public class Square extends StackPane {
 	    setLayoutY(y);
 	}
 
-	public Square(int strInputNumber) {
+	public Square(int input_text) {
 		rec.setWidth(60.0f); 
 	    rec.setHeight(60.0f); 
 	    rec.setFill(Color.web("#b0ceeb",1.0));
 	    Label label = new Label();
-	    label.setText(Integer.toString(strInputNumber));
+	    label.setText(Integer.toString(input_text));
 	    label.setFont(Font.font("verdana", FontPosture.REGULAR, 14));;
 	    getChildren().add(rec);
 	    getChildren().add(label);

@@ -1,6 +1,7 @@
 package sortingalgorithms;
 
 import elements.Square;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 
@@ -13,7 +14,7 @@ public abstract class SortingAlgo implements Visualizable {
 	protected int total_step;
 	protected static Pane pane;
 	protected static TextArea text_area;
-	
+	protected static Label lb;
 	
 
 	public int getCurr_step() {
@@ -30,6 +31,15 @@ public abstract class SortingAlgo implements Visualizable {
 		pane = input_pane;
 		text_area = input_progress_area;
 		array = array_og.clone();
+	}
+	
+	public SortingAlgo(int[] input_array, Pane input_pane, TextArea input_progress_area, Label input_lb) {
+		array_og = input_array;
+		arr_length = 8;
+		pane = input_pane;
+		text_area = input_progress_area;
+		array = array_og.clone();
+		lb = input_lb;
 	}
 	
 	public static Square drawSquare(int value) {

@@ -186,14 +186,22 @@ public class SortAlgoController {
 		} else if (randomButton.isSelected()) {
 			Random rand = new Random();
 			for (int i = 0; i < 8; i++) {
-				array[i] = rand.nextInt(100);
+				if (sort.equals("RadixSort")) {
+					array[i] = rand.nextInt(10000);
+				} else if (sort.equals("MergeSort")) {
+					array[i] = rand.nextInt(100);
+				} else {
+					array[i] = rand.nextInt(10);
+				}
 			}
 		}
 		
 		if (sort == "RadixSort") {
-			sortingAlgo = new RadixSort(array,mypane1,instructfield);
+			sortingAlgo = new RadixSort(array,mypane1,instructfield, stepLabel);
+			instructfield.setText("Count sorting the first time !!!!");
+			stepLabel.setText(1 + "/" + sortingAlgo.getTotal_step());
 		} else if (sort == "MergeSort") {
-			sortingAlgo = new MergeSort(array,mypane1,instructfield);		
+			sortingAlgo = new MergeSort(array,mypane1,instructfield);
 		} else {
 			sortingAlgo = new CountingSort(array,mypane1,instructfield);
 		}
