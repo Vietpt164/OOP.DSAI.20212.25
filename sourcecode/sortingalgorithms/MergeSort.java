@@ -16,33 +16,12 @@ public class MergeSort extends SortingAlgo{
 	private double[][] steps;
 	private Color[] initColor = {Color.LIGHTBLUE, Color.BLACK };
 	private final String[] instructions;
-	private static final int MAX_INPUT_SIZE = 1 << 28;
-	private void Check_valid_value(int[] elements) {
-		int MAX_VALUE_TO_SORT = Integer.MAX_VALUE;
-		int MIN_VALUE_TO_SORT = Integer.MIN_VALUE;
-		for (int element : elements) {
-		  if (element > MAX_VALUE_TO_SORT) {
-		    throw new IllegalArgumentException(
-			"Element " + element + " is greater than maximum " + MAX_VALUE_TO_SORT);
-		  }
-		  if (element < MIN_VALUE_TO_SORT) {
-		    throw new IllegalArgumentException(
-			"Element " + element + " is less than minimum " + MIN_VALUE_TO_SORT);
-		  }
-		  System.out.print("All values are valid");
-		}}
-	    @Override
-	public boolean isSuitableForInputSize(int size) {
-		  if (size > MAX_INPUT_SIZE){
-		    throw new IllegalArgumentException(
-			"Too Much Values in Array.Please Try Again !");
-		  };
-		}
+	
 	public MergeSort(int[] input_array, Pane inputPane, TextArea input_progress_area) {
 		super(input_array, inputPane, input_progress_area);
 		this.array = input_array;
 		Check_valid_value(input_array);
-        	isSuitableForInputSize(input_array.length)
+        isSuitableForInputSize(input_array.length);
 
 		steps = new double[6][160];
 		this.startX = 0;
