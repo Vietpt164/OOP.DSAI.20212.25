@@ -12,7 +12,7 @@ public class CountingSort extends SortingAlgo{
 	public CountingSort(int[] input_array, Pane input_pane, TextArea input_text_area) {
 		super(input_array, input_pane, input_text_area);
 		Check_valid_value(input_array);
-        	isSuitableForInputSize(input_array.length)
+       	isSuitableForInputSize(input_array.length);
 
 		// TODO Auto-generated constructor stub
 	}
