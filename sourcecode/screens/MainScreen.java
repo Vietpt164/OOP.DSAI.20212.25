@@ -28,6 +28,7 @@ public class MainScreen extends Application{
 		Parent root = loader.load();
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
+
 		stage.centerOnScreen();
 		stage.setTitle("Sorting Visualization");
 		stage.setResizable(false);
@@ -42,8 +43,8 @@ public class MainScreen extends Application{
 		e.printStackTrace();
 	}
 }	
-	@FXML
-	public void exitPressed(Stage stage){	
+@FXML
+public void exitPressed(Stage stage){	
 	
 	Alert alert = new Alert(AlertType.CONFIRMATION);
 	alert.setTitle("Quit");

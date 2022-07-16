@@ -14,7 +14,7 @@ public class HelpController   {
 			
 		    TextArea ta = new TextArea();
 		    ta.setEditable(false);
-		    
+		     
 		    ScrollPane scrollPane = new ScrollPane(ta);
 		    scrollPane.setFitToHeight(true);
 		    scrollPane.setFitToWidth(true);
@@ -22,6 +22,7 @@ public class HelpController   {
 		    pane.setCenter(scrollPane);
 			Scene scene = new Scene(pane, 500, 500);
 			Scanner input = new Scanner(new File("E:\\OOP.DSAI.20212.25\\sourcecode\\controller\\Help.txt"));
+
 			while (input.hasNext()) {
 	               ta.appendText(input.nextLine() + '\n');
 			}
