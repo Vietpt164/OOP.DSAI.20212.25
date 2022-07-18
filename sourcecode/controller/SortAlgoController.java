@@ -206,7 +206,7 @@ public class SortAlgoController {
 						array[i] = rand.nextInt(10000);
 					} else if (sort.equals("MergeSort")) {
 						array[i] = rand.nextInt(100);
-					} else {
+					} else if (sort.equals("CountingSort")){
 						array[i] = rand.nextInt(10);
 					}
 				}
@@ -230,6 +230,7 @@ public class SortAlgoController {
     		input_error.setHeaderText("Invalid input array");
     		input_error.setContentText(e.getMessage());
     		input_error.show();
+    		e.printStackTrace();
     	}
 		
     }
