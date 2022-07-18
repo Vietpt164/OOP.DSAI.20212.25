@@ -111,12 +111,6 @@ public class MergeSort extends SortingAlgo{
 	}
 
 	private void assignStep(double args1, double args2, double args3, double args4, int color, int instruction) {
-		// color:
-		// 0: lightblue
-		// 1: yellow: selected and ready to merge
-		// 2: blue: merged
-		// 3: white: vanished
-		// 4: green: selected and ready to split
 		this.steps[0][total_step] = args1;
 		this.steps[1][total_step] = args2;
 		this.steps[2][total_step] = args3;
@@ -167,6 +161,12 @@ public class MergeSort extends SortingAlgo{
 	private void displayStep(int stepNum) {
 		Color[] c = initColor.clone();
 		int tmp = (int) steps[4][stepNum];
+		// color:
+		// 0: light blue
+		// 1: yellow: selected and ready to merge
+		// 2: blue: merged
+		// 3: white: vanished
+		// 4: green: selected and ready to split
 		if (tmp == 0)
 			c[0] = Color.LIGHTBLUE;
 		else if (tmp == 1)
