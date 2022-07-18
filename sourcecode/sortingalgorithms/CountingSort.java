@@ -1,121 +1,138 @@
 package sortingalgorithms;
+import java.util.*;
+import java.io.*;
+import java.lang.Math;
 
-import elements.Square;
-import javafx.animation.ParallelTransition;
-import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
+import javafx.scene.layout.StackPane;
 
-public class CountingSort extends SortingAlgo {
-	private double startX, startY;
-	private int[][] step;
-	private Color[] initColor = {Color.LIGHTBLUE, Color.BLACK };
-	private final String[] instructions;
-	private int[] keys;
+import java.util.ArrayList;
+
+import elements.Square;
+
+public class CountingSort extends SortingAlgo{
+	//private static int n;
+	public CountingSort(int[] input_array, Pane input_pane, TextArea input_text_area, Label input_lb) {
+		super(input_array, input_pane, input_text_area, input_lb);
+		
+		final int m = getMax(array, arr_length);
+		for (int i =0; i<8;i++) {
+			Square bruh = drawSquare(array[i]);
+			bruh.setAxis(100+65*i, 25);
+			pane.getChildren().add(bruh);
+		}
+			countSort(arr_length, 1);
+			text_area.setText("Count sorting the 1 time !!!!");
+			curr_step = 0;
+			 
+	}
+
+	@Override
+	public void nextStep() {
+		if (curr_step < 4) {
+			curr_step = curr_step+1;
+		} 
+		for (int i = 0; i < curr_step; i+=1) { 
+			countSort(8,(int) Math.pow(10, i));}
+		}
 	
-	public CountingSort(int[] input_array, Pane input_pane, TextArea input_text_area) {
-		super(input_array, input_pane, input_text_area);
-		this.array_og = input_array;
-		this.array = array_og.clone();
+	@Override
+	public void previousStep() {
+		if (curr_step > 0) {
+			curr_step = curr_step-1;
+		} for (int i = 0; i < curr_step; i+=1) { 
+			countSort(8,(int) Math.pow(10, i));}
 		
-		step = new int[4][100];
-		curr_step = total_step = 0;
-		
-		this.instructions = new String[4];
-		instructions[0] = "Initialize the key array with zeros";
-		instructions[1] = "For every number in the list increase the respective index in the key array.";
-		instructions[2] = "Loop over all elements of the key array.";
-		instructions[3] = "While the current element is not zero, add the index to the result and decrease the counter.";
-
-		//assignStep(0, arr_length - 1, pane.getWidth() / 2 - (arr_length/2) * 60, startY, 0, 0);
-		//sort the array beforehand
-		//sort(0, arr_length - 1, startX, pane.getWidth(), startY); 
-		for (int i = 0; i < arr_length ; i++) {
-			Square element = drawSquare(array[i]);
-			element.setAxis(200+65*i, 50);
-			pane.getChildren().add(element);
-		}
-		
-		
-		
-		for (int i = 0; i <= getMax(array) ; i++) {
-			Square element = drawSquare(i);
-			element.setAxis(200+65*i, 300);
-			pane.getChildren().add(element);
-		}
-		
-		counting_sort();
 	}
 	
-	void counting_sort() {
-
-	    // First, find the maximum value in A[]
-	    int K = getMax(array);
-
-	    // Initialize the elements of keys[] with 0
-	    keys = new int[K+1];
-	    for(int i = 0 ; i <= K; i++) {
-	        keys[i] = 0;
-	    }
-
-	    // Store the frequencies of each distinct element of A[],
-	    // by mapping its value as the index of Aux[] array
-	    
-	    
-	    for(int i = 0; i < arr_length; i++) {
-	    	Square element = new Square(array[i], 200+65*i, 50, Color.BLUE, Color.BLACK);
-			pane.getChildren().add(element);
-		
-			ParallelTransition pt = new ParallelTransition();
-			pt.getChildren().add(element.move(65 * array[i], 250));
-			pt.play();
-			//element.move(200 + 65 * array[i], 300);
-	    	keys[array[i]]++;
-	    }
-	    
-
-	    /*int j = 0;
-	    for(int i = 0; i <= K; i++) {
-	    	int tmp = keys[i];
-	        // Keys stores which element occurs how many times,
-	        // Add i in sortedA[] according to the number of times i occured in A[]
-	        while(tmp != 0) {
-	            array[j] = i;
-	            j++;
-	        }
-	    }*/
+	int getMax(int arr[], int n)
+	{
+		int mx = arr[0];
+		for (int i = 1; i < n; i++)
+			if (arr[i] > mx)
+				mx = arr[i];
+		return mx;
 	}
-	
-	private int getMax(int[] arr) {
-		int max = arr[0];
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] > max) {
-				max = arr[i];
-			}
+
+	void countSort(int n, int exp) {
+		int b = (int)Math.log10(exp) + 1;
+		text_area.setText("Count sorting the "+ b + " time !!!!");
+		//lb.setText(b + "/" + 4);
+		pane.getChildren().clear();
+		for (int i = 0 ; i < 10; i++) {
+			Square bruh = drawSquare(i);
+			bruh.setFill("#e8e8e8");
+			bruh.setAxis(200 + 65*i, 400);
+			pane.getChildren().add(bruh);
 		}
-		return max;
+	 
+		int output[] = new int[n]; 
+		int i;
+		int count[] = new int[10];
+		Arrays.fill(count, 0);
+		for (i = 0; i < n; i++){
+			count[(array[i] / exp) % 10]++;
+			Square bruh = drawSquare(array[i]);
+			bruh.setAxis(200 + ((array[i] / exp) % 10)*65,400 - 65*count[(array[i] / exp) % 10]);
+			pane.getChildren().add(bruh);
+		} 
+
+		for (i = 1; i < 10; i++) {
+			count[i] += count[i - 1];}
+
+		for (i = n - 1; i >= 0; i--) {
+			output[count[(array[i] / exp) % 10] - 1] = array[i];
+			count[(array[i] / exp) % 10]--;
+		
+		}
+
+		
+		for (i = 0; i < n; i++) {
+			array[i] = output[i];}
+		
+		
+	
+		for (int k =0; k<8;k++) {
+			Square bruh = drawSquare(array[k]);
+			bruh.setAxis(250+65*k, 25);
+			pane.getChildren().add(bruh);
+		}
 	}
+
+	
+	@Override
+	public int getTotal_step() {
+		if (getMax(array, arr_length) < 10) {
+			return 1;
+		} else if (getMax(array, arr_length) < 100 && getMax(array, arr_length) >= 10) {
+			return 2;
+		}else if (getMax(array, arr_length) < 1000 && getMax(array, arr_length) >= 100) {
+			return 3;
+	} else {
+		return 4;
+	}
+	}
+
 	@Override
 	public void displayInitialArray() {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void nextStep() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void previousStep() {
-		// TODO Auto-generated method stub
-		
-	}
+	
+
 	@Override
 	public void displaySortedArray() {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	
 }
+

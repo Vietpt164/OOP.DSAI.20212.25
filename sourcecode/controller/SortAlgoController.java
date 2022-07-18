@@ -194,6 +194,19 @@ public class SortAlgoController {
 					}
 				}
 				
+				if (sort.equals("CountingSort")) {
+					for (int i = 0; i < strArray.length ; i++) {
+						try {
+							array[i] = Integer.parseInt(strArray[i].trim());
+							if (array[i] > 9)
+								throw new NumberFormatException("Array element have to be less than or equals 9");
+						} catch (NumberFormatException e) {
+							throw e;
+						}
+					}
+					
+				}
+				
 				if (strArray.length != 8) {
 					throw new Exception("Please input an array of size 8");
 				}
@@ -219,7 +232,7 @@ public class SortAlgoController {
 			} else if (sort == "MergeSort") {
 				sortingAlgo = new MergeSort(array,mypane1,instructfield);
 			} else {
-				sortingAlgo = new CountingSort(array,mypane1,instructfield);
+				sortingAlgo = new CountingSort(array,mypane1,instructfield, stepLabel);
 			}
 			
 			stepLabel.setText("" + (sortingAlgo.getCurr_step()+1)  + "/" + sortingAlgo.getTotal_step());
