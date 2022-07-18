@@ -2,6 +2,8 @@ package screens;
 
 
 import sortingalgorithms.*;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import controller.MainScreenController;
 import controller.SortAlgoController;
@@ -14,10 +16,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.*;
 
 public class MainScreen extends Application{
+	
 	@Override
 	public void start(Stage stage) {
 
