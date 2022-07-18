@@ -21,8 +21,8 @@ public class CountingSort extends SortingAlgo{
 	//private static int n;
 	//Exception
 	 private void Check_valid_value(int[] elements) {
-		int min = Integer.MAX_VALUE;
-		int max = Integer.MIN_VALUE;
+		int MAX_VALUE_TO_SORT = Integer.MAX_VALUE;
+		int MIN_VALUE_TO_SORT = Integer.MIN_VALUE;
 		for (int element : elements) {
 		  if (element > MAX_VALUE_TO_SORT) {
 		    throw new IllegalArgumentException(
@@ -36,7 +36,7 @@ public class CountingSort extends SortingAlgo{
 		}}
 	    @Override
 	    public boolean isSuitableForInputSize(int size) {
-		  if (size > MAX_INPUT_SIZE){
+		  if (size > Integer.MAX_VALUE - 5){
 		    throw new IllegalArgumentException(
 			"Too Much Values in Array.Please Try Again !");
 		  };
