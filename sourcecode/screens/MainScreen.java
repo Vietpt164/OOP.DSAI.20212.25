@@ -1,23 +1,13 @@
 package screens;
 
-
-import sortingalgorithms.*;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import controller.MainScreenController;
-import controller.SortAlgoController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.*;
 
@@ -48,18 +38,18 @@ public class MainScreen extends Application{
 		e.printStackTrace();
 	}
 }	
-@FXML
-public void exitPressed(Stage stage){	
+	@FXML
+	public void exitPressed(Stage stage){	
 	
-	Alert alert = new Alert(AlertType.CONFIRMATION);
-	alert.setTitle("Quit");
-	alert.setHeaderText("You're about to exit!");
-	alert.setContentText("See you next time !!!");
-	
-	if (alert.showAndWait().get() == ButtonType.OK){
-		stage.close();
-	} 
-}
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Quit");
+		alert.setHeaderText("You're about to exit!");
+		alert.setContentText("See you next time !!!");
+		
+		if (alert.showAndWait().get() == ButtonType.OK){
+			stage.close();
+		} 
+	}
 
 
 	public static void main(String[] args) {

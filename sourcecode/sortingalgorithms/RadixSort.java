@@ -31,7 +31,7 @@ public class RadixSort extends SortingAlgo{
 			bruh.setAxis(100+65*i, 25);
 			pane.getChildren().add(bruh);
 		}
-			countSort(arr_length, 1);
+			countingSort(arr_length, 1);
 			text_area.setText("Count sorting the 1 time !!!!");
 			curr_step = 0;
 			 
@@ -43,7 +43,7 @@ public class RadixSort extends SortingAlgo{
 			curr_step = curr_step+1;
 		} 
 		for (int i = 0; i < curr_step; i+=1) { 
-			countSort(8,(int) Math.pow(10, i));}
+			countingSort(8,(int) Math.pow(10, i));}
 		}
 	
 	@Override
@@ -51,7 +51,7 @@ public class RadixSort extends SortingAlgo{
 		if (curr_step > 0) {
 			curr_step = curr_step-1;
 		} for (int i = 0; i < curr_step; i+=1) { 
-			countSort(8,(int) Math.pow(10, i));}
+			countingSort(8,(int) Math.pow(10, i));}
 		
 	}
 	
@@ -64,7 +64,7 @@ public class RadixSort extends SortingAlgo{
 		return mx;
 	}
 
-	void countSort(int n, int exp) {
+	void countingSort(int n, int exp) {
 		int b = (int)Math.log10(exp) + 1;
 		text_area.setText("Count sorting the "+ b + " time !!!!");
 		//lb.setText(b + "/" + 4);

@@ -34,7 +34,7 @@ public class CountingSort extends SortingAlgo{
 			pane.getChildren().add(bruh);
 		}
 			countSort(arr_length, 1);
-			text_area.setText("Count sorting the 1 time !!!!");
+			text_area.setText("Finish sorting array !!!!");
 			curr_step = 0;
 			 
 	}
